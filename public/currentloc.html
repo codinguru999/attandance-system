@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<title>
+	DOM Geolocation position Property
+</title>
+
+<body>
+	<h1 style = "color: green">
+		GeeksforGeeks
+	</h1>
+	
+	<b>
+		DOM Geolocation position Property
+	</b>
+	
+	<p>
+		Click the button to get your position.
+	</p>
+	
+	<button onclick = "getLocation()">
+		Get Location
+	</button>
+	
+	<p class = "location"></p>
+
+		<script>
+		let x = document.querySelector('.location');
+	
+		function getLocation() {
+	
+			/* Check if location support is available */
+			if (navigator.geolocation) {
+	
+				/* Callback to the showPosition function */
+				navigator.geolocation.getCurrentPosition(showPosition);
+		} else {
+				x.innerHTML = "Geolocation is not supported.";
+			}
+		}
+	
+		function showPosition(position) {
+			x.innerHTML = "Latitude: " +
+			
+			/* Get the latitude from the Coordinates object */
+			position.coords.latitude +
+	
+			"<br>Longitude: " +
+	
+			/* Get the longitude from the Coordinates object */
+			position.coords.longitude +
+			
+			"<br>Timestamp: " +
+			
+			/* Get the timestamp of the location obtained */
+			position.timestamp;
+		}
+	</script>
+</body>
+
+</html>					

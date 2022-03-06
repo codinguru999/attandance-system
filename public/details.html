@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Register yourself</h2>
+    <p>Note that you should be in your office to register Yourself</p>
+    <form id="form" action="data" method="get">
+      <label for="name">Name</label><br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter Your name"
+      /><br />
+      <label for="desg">Designation</label>
+      <select name="desgi" id="desg">
+        <br />
+        <option value="jrdev">Jr. Dev</option>
+        <option value="asseng">Ass. Software Engineer</option>
+        <option value="srdev">Senior Developer</option>
+        <option value="sofen">Sofware Engineer</option>
+        <option value="testr">Tester</option>
+        <option value="hr">HR</option>
+        <option value="select" selected>Select</option></select
+      ><br />
+      <label for="empno">Employee Number</label>
+      <input type="tel" name="emp" id="empno" /><br />
+      <div>
+        Gender : Male <input type="radio" name="Gender" value="male" /> Female
+        <input type="radio" name="Gender" value="female" />
+      </div>
+
+      <label for="address">Office Address</label><br />
+      <input type="text" id="lat" name="lat" class="hide" />
+      <input type="text" id="lng" name="lng" class="hide" />
+      <a onclick="getLocation()">Get location</a>
+      <p class="location"></p>
+      <label for="img">Upload your image(headshot)</label><br>
+      <input type="file" accept="image/*" capture id="img" name="photo"><br>
+      <img alt="your uploaded image" id="imgurl">
+      <input type="text" name="url" id="src">
+      <input type="submit" value="Submit" />
+    </form>
+    <!-- <script>
+        let add = document.getElementById('address').value
+        console.log(add)
+    </script> -->
+    <p class="location"></p>
+
+    <script>
+      let x = document.querySelector(".location");
+
+      function getLocation() {
+        /* Check if location support is available */
+        if (navigator.geolocation) {
+          /* Callback to the showPosition function */
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported.";
+        }
+      }
+
+      function showPosition(position) {
+        x.innerHTML = "We have recorded your location Thank You";
+        document.getElementById("lat").value = position.coords.latitude;
+        document.getElementById("lng").value = position.coords.longitude;
+        //     x.innerHTML = "Latitude: " +
+
+        //     /* Get the latitude from the Coordinates object */
+        //     position.coords.latitude +
+
+        //     "<br>Longitude: " +
+
+        //     /* Get the longitude from the Coordinates object */
+        //     position.coords.longitude ;
+      }
+    </script>
+  </body>
+  <script src="./details.js"></script>
+</html>
